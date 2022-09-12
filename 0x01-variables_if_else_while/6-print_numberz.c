@@ -1,21 +1,19 @@
 #include <stdio.h>
 
 /**
- *main - print 0123456789 using putchar
- *Return: Always 0 (Success)
+ * main - prints out all numbers under 10
+ * without using any char variables
+ * Return: 0
  */
-
 int main(void)
 {
-	int n = '0';
+	int i = 48;
 
-	while (n <= '9')
+	while (i < 58)
 	{
-		putchar(n);
-		n++;
+		putchar(i);
+		i++;
 	}
 	putchar('\n');
-
 	return (0);
 }
-Footer
