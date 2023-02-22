@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 0x02. C - Functions, nested loops
 
 ## Description
@@ -52,3 +53,6 @@ What you should learn from this project:
 ---
 
 
+=======
+0x02-functions_nested_loops
+>>>>>>> 18d4e8b (updates)
