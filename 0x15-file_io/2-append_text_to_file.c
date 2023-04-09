@@ -1,28 +1,33 @@
 #include "holberton.h"
+
 /**
- * append_text_to_file - reads a text file and prints it to the POSIX
- * @filename: filename
- * @text_content: NULL terminated string to write to the file
+ * append_text_to_file - appends text at the end of a file.
+ * @filename: name of the file to append the text.
+ * @text_content: the NULL terminated string to add at the end of the file.
  * Return: 1 on success, -1 on failure
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int a;
-	int b;
-	int c;
+	int file_descriptor, length = 0;
 
-	b = 0;
-	a = open(filename, O_RDWR | O_APPEND);
-	if (a == -1)
-	return (-1);
-	if (filename == NULL)
-	return (-1);
-	if (text_content == NULL)
-	return (1);
-	while (text_content[b] != '\0')
-	b++;
-	c = write(a, text_content, b);
-	if (c == -1)
-	return (-1);
+	if (!filename)
+		return (-1);
+	file_descriptor = open(filename, O_RDWR | O_APPEND);
+	if (file_descriptor < 0)
+		return (-1);
+	if (!text_content)
+	{
+		close(file_descriptor);
+		return (1);
+	}
+
+	while (text_content[length])
+		length++;
+	if (write(file_descriptor, text_content, length) < 0)
+	{
+		close(file_descriptor);
+		return (-1);
+	}
+	close(file_descriptor);
 	return (1);
 }
